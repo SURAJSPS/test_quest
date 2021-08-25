@@ -5,9 +5,11 @@ import 'package:flutter_tes/presentation/page1.dart';
 
 // ignore: must_be_immutable
 class Page3 extends StatefulWidget {
-  Page3({Key? key, this.answerMap, this.consoleAns}) : super(key: key);
+  Page3({Key? key, this.answerMap, this.consoleAns, this.questionLength})
+      : super(key: key);
   Map<int, dynamic>? answerMap;
   Map<int, dynamic>? consoleAns;
+  int? questionLength;
 
   @override
   _Page3State createState() => _Page3State();
@@ -42,7 +44,7 @@ class _Page3State extends State<Page3> {
         score = score + 1;
       }
     }
-    per = (((score - 1) / widget.answerMap!.length) * 100).toString();
+    per = (((score - 1) / widget.questionLength!.toInt()) * 100).toString();
     result = per.split('.');
   }
 

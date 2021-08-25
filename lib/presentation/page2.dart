@@ -207,6 +207,7 @@ Widget getStreamBilder(BuildContext context, Size size,
                                           builder: (context) => Page3(
                                                 answerMap: answerMap,
                                                 consoleAns: consoleAns,
+                                                 questionLength: snapshot.data!.size,
                                               )));
                                 } else {
                                   buttonCarouselController.nextPage(
@@ -260,6 +261,8 @@ Widget getStreamBilder(BuildContext context, Size size,
                                           builder: (context) => Page3(
                                                 answerMap: answerMap,
                                                 consoleAns: consoleAns,
+                                                questionLength: snapshot.data!.size,
+
                                               )));
                                 } else {
                                   buttonCarouselController.nextPage(
