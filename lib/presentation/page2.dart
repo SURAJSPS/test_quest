@@ -139,14 +139,14 @@ Widget getStreamBilder(BuildContext context, Size size,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Column(
                           children: [
                             const SizedBox(
-                              height: 20,
+                              height: 10,
                             ),
                             Text(
                               "${snapshot.data!.docs[index]['index']}" +
@@ -158,7 +158,20 @@ Widget getStreamBilder(BuildContext context, Size size,
                               ),
                             ),
                             const SizedBox(
-                              height: 20,
+                              height: 10,
+                            ),
+                            Text(
+                              "${snapshot.data!.docs[index]['question_exp']}",
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 6,
+                              textAlign: TextAlign.justify,
+                              style: TextStyle(
+                                  // letterSpacing: .1,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            const SizedBox(
+                              height: 10,
                             ),
                             Text(
                               "${snapshot.data!.docs[index]['question']}",
@@ -166,7 +179,7 @@ Widget getStreamBilder(BuildContext context, Size size,
                               maxLines: 1,
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize: 40, fontWeight: FontWeight.w500),
+                                  fontSize: 20, fontWeight: FontWeight.w500),
                             ),
                           ],
                         ),
