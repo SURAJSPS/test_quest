@@ -13,23 +13,24 @@ class Page1 extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
+        physics: NeverScrollableScrollPhysics(),
         child: Stack(
           children: [
             getBackGroundImage(context, size),
-            Positioned(
-              left: 0,
-              right: 0,
-              top: size.height / 3.1,
-              child: Column(
-                children: [
-                  getCategory(),
-                  SizedBox(
-                    height: 40,
-                  ),
-                  getStreamBuilder(category, size),
-                ],
-              ),
-            )
+            ListView(
+              shrinkWrap: true,
+              children: [
+                Container(
+                  height: size.height / 2.8,
+                  width: size.width,
+                ),
+                getCategory(),
+                SizedBox(
+                  height: 20,
+                ),
+                getStreamBuilder(category, size),
+              ],
+            ),
           ],
         ),
       ),
@@ -37,7 +38,7 @@ class Page1 extends StatelessWidget {
   }
 }
 
-Widget  getCategory() { 
+Widget getCategory() {
   return Container(
     alignment: Alignment.center,
     child: Text(
@@ -52,9 +53,11 @@ Widget  getCategory() {
 
 Widget getBackGroundImage(BuildContext context, Size size) {
   return Container(
+    height: size.height,
     width: size.width,
     child: Image.asset(
       'assets/Group 9634.png',
+      fit: BoxFit.fill,
     ),
   );
 }
@@ -69,6 +72,7 @@ Widget getStreamBuilder(category, size) {
         return Center(child: CircularProgressIndicator());
       }
       return ListView(
+        physics: NeverScrollableScrollPhysics(),
         padding: EdgeInsets.all(0),
         shrinkWrap: true,
         children: snapshot.data!.docs.map((e) {
